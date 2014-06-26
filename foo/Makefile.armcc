@@ -1,0 +1,105 @@
+CC = /Volumes/gcc-armx/bin/arm-linux-gnueabi-gcc
+CXX = /Volumes/gcc-armx/bin/arm-linux-gnueabi-g++
+CFLAGS= -O3 -Wall -fomit-frame-pointer -fstrength-reduce -funroll-loops -ffast-math -fPIC -DPIC -g -mcpu=arm1136jf-s -mtune=arm1136jf-s -mfloat-abi=softfp -mfpu=vfp \
+-fsingle-precision-constant \
+-frename-registers \
+-freorder-blocks \
+-freorder-functions \
+-foptimize-sibling-calls \
+-finline-functions \
+-finline-functions-called-once \
+-fearly-inlining \
+-fno-sched-interblock \
+-fno-sched-spec \
+-fcaller-saves \
+-ftracer \
+-fmodulo-sched \
+-fthread-jumps \
+-fcse-follow-jumps \
+-fcse-skip-blocks \
+-frerun-cse-after-loop \
+-fdelete-null-pointer-checks \
+-fexpensive-optimizations \
+-foptimize-register-move \
+-fschedule-insns \
+-fschedule-insns2 \
+-fvariable-expansion-in-unroller \
+-falign-functions \
+-falign-labels \
+-falign-loops \
+-falign-jumps \
+-fcprop-registers \
+-fsched-spec-load \
+-fsched-spec-load-dangerous \
+-fsched-stalled-insns \
+-fsched-stalled-insns-dep \
+-fsched2-use-traces \
+-freschedule-modulo-scheduled-loops \
+-fgcse \
+-fgcse-lm \
+-fgcse-sm \
+-fgcse-las \
+-fgcse-after-reload \
+-funsafe-loop-optimizations \
+-fcrossjumping \
+-fif-conversion \
+-fif-conversion2 \
+-ftree-pre \
+-ftree-fre \
+-ftree-copy-prop \
+-ftree-store-copy-prop \
+-ftree-salias \
+-ftree-sink \
+-ftree-ccp \
+-ftree-store-ccp \
+-ftree-dce \
+-ftree-dominator-opts \
+-ftree-ch \
+-ftree-loop-optimize \
+-ftree-loop-linear \
+-ftree-loop-im \
+-ftree-loop-ivcanon \
+-fivopts \
+-ftree-sra \
+-ftree-copyrename \
+-ftree-ter \
+-ftree-lrs \
+-ftree-vectorize \
+-ftree-vect-loop-version \
+-ftree-vrp
+
+LIBFLAGS=-nostartfiles -shared -Wl,-Bsymbolic -L/Volumes/gcc-armx/lib
+
+PLUGIN_LIBS=foo_limiter.so foo_transients.so foo_transients_mono.so foo_driver.so
+PLUGIN_SOURCES=foo_limiter.c foo_transients.c foo_transients_mono.c foo_driver.so
+
+all: plugins tester
+
+%.so : %.o rms.o
+	$(CC) $(LIBFLAGS) rms.o $< -o $@
+
+%.c : %.xml makestub.pl
+	./makestub.pl $< > $@
+
+
+plugins: $(PLUGIN_LIBS)
+
+tester.o: foo_limiter.xml foo_transients.xml
+
+tester: tester.o rms.o $(PLUGIN_SOURCES)
+	gcc tester.o rms.o -o tester -lm 
+
+tester.o: $(PLUGIN_SOURCES)
+
+$(PLUGIN_SOURCES): utils.h rms.h
+
+rms.o: rms.h
+
+install: plugins
+	cp $(PLUGIN_LIBS) /usr/lib/ladspa/
+
+clean:
+	rm -f *.o *.so $(PLUGIN_SOURCES) tester plot/*
+
+
+#

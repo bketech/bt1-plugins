@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TapVibrato", "TapVibrato.vcproj", "{255A7E6D-B3D1-449B-83E6-A2162E03B131}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{255A7E6D-B3D1-449B-83E6-A2162E03B131}.Debug|Win32.ActiveCfg = Debug|Win32
+		{255A7E6D-B3D1-449B-83E6-A2162E03B131}.Debug|Win32.Build.0 = Debug|Win32
+		{255A7E6D-B3D1-449B-83E6-A2162E03B131}.Release|Win32.ActiveCfg = Release|Win32
+		{255A7E6D-B3D1-449B-83E6-A2162E03B131}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

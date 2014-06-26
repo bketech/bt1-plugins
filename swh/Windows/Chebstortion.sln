@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Chebstortion", "Chebstortion.vcproj", "{229EF49A-637D-45C6-905E-16C20490FC56}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{229EF49A-637D-45C6-905E-16C20490FC56}.Debug|Win32.ActiveCfg = Debug|Win32
+		{229EF49A-637D-45C6-905E-16C20490FC56}.Debug|Win32.Build.0 = Debug|Win32
+		{229EF49A-637D-45C6-905E-16C20490FC56}.Release|Win32.ActiveCfg = Release|Win32
+		{229EF49A-637D-45C6-905E-16C20490FC56}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

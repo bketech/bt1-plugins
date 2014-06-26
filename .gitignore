@@ -1,0 +1,9 @@
+.DS_Store
+build
+*.dylib
+*.so
+*.o
+*.a
+*.obj
+*.lib
+
