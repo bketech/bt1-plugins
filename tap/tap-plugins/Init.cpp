@@ -5,8 +5,15 @@
  *
  */
 
-extern "C" void _init();
-extern "C" void _fini();
+#define qHaveInitFini 1
+
+#if qHaveInitFini
+ extern "C" void _init();
+ extern "C" void _fini();
+#else
+ void _init() {}
+ void _fini() {}
+#endif
 
 /** A global object of this class is used to perform initialisation
     and shutdown services for the entire library. The constructor is
@@ -16,11 +23,11 @@ class StartupShutdownHandler {
 public:
 
   StartupShutdownHandler() {
-   _init();
+   //_init();
   }
 
   ~StartupShutdownHandler() {
-   _fini();
+   //_fini();
   }
 
 } g_oStartupShutdownHandler;
