@@ -59,7 +59,7 @@
 
 
       // logscale parameter is given in 0.0f .. 1.0f, NOT in real scale values, this function sets the right scale
-      void inline FooLimiter_triggerEnvelope(Envelope *env, int ramp_samples, int release_samples, float current_gain, float new_limit_gain, float logscale)
+      inline void FooLimiter_triggerEnvelope(Envelope *env, int ramp_samples, int release_samples, float current_gain, float new_limit_gain, float logscale)
       {
 	  float new_ramp_delta = (new_limit_gain - current_gain)/(float)ramp_samples;
 

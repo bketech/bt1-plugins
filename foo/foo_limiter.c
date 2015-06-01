@@ -14,7 +14,7 @@
 #include "utils.h"
 #include "ladspa.h"
 
-#line 29 "foo_limiter.xml"
+//#line 30 "foo_limiter.xml"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,14 +41,13 @@ typedef struct _Envelope {
   
     int at_sample; 
 
-
     // Logarithmic release envelope
     float logscale;
 } Envelope;
 
 
 // logscale parameter is given in 0.0f .. 1.0f, NOT in real scale values, this function sets the right scale
-void inline FooLimiter_triggerEnvelope(Envelope *env, int ramp_samples, int release_samples, float current_gain, float new_limit_gain, float logscale)
+void FooLimiter_triggerEnvelope(Envelope *env, int ramp_samples, int release_samples, float current_gain, float new_limit_gain, float logscale)
 {
     float new_ramp_delta = (new_limit_gain - current_gain)/(float)ramp_samples;
 
@@ -155,7 +154,7 @@ const LADSPA_Descriptor *ladspa_descriptor(unsigned long index) {
 }
 
 static void cleanupFoo_limiter(LADSPA_Handle instance) {
-#line 160 "foo_limiter.xml"
+//#line 160 "foo_limiter.xml"
 	Foo_limiter *plugin_data = (Foo_limiter *)instance;
 	free(plugin_data->workbuffer_left);
 	free(plugin_data->workbuffer_right);
@@ -215,7 +214,7 @@ static LADSPA_Handle instantiateFoo_limiter(
 	float *workbuffer_right = NULL;
 	int workbuffer_size;
 
-#line 133 "foo_limiter.xml"
+//#line 133 "foo_limiter.xml"
 	samplerate = s_rate;
 	ramp_up_time_samples = (int)floor((float)samplerate * (float)FOO_LIMITER_RAMP_UP_MILLISECONDS / 1000.0f);
 #ifdef FOO_TESTER
@@ -293,7 +292,7 @@ static void runFoo_limiter(LADSPA_Handle instance, unsigned long sample_count) {
 	float * workbuffer_right = plugin_data->workbuffer_right;
 	int workbuffer_size = plugin_data->workbuffer_size;
 
-#line 165 "foo_limiter.xml"
+//#line 165 "foo_limiter.xml"
 	
 	        unsigned long n,i,lookahead, buffer_offset;
 	        float min_gain = 1.0f;
@@ -437,7 +436,7 @@ static void runAddingFoo_limiter(LADSPA_Handle instance, unsigned long sample_co
 	float * workbuffer_right = plugin_data->workbuffer_right;
 	int workbuffer_size = plugin_data->workbuffer_size;
 
-#line 165 "foo_limiter.xml"
+//#line 165 "foo_limiter.xml"
 	
 	        unsigned long n,i,lookahead, buffer_offset;
 	        float min_gain = 1.0f;

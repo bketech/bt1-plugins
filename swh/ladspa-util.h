@@ -12,7 +12,7 @@
 #endif
 #include <math.h>
 #ifdef	WIN32
-#include "..\..\include\Windows\stdint.h"
+#include <stdint.h>
 #else
 #include <stdint.h>
 #endif
@@ -54,7 +54,9 @@ typedef union {
 } ls_pcast32;
 
 // Sometimes it doesn't get defined, even though it eists and C99 is declared
+#if ! _MSC_VER
 long int lrintf (float x);
+#endif
 
 // 1.0 / ln(2)
 #define LN2R 1.442695041f

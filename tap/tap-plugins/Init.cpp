@@ -23,11 +23,11 @@ class StartupShutdownHandler {
 public:
 
   StartupShutdownHandler() {
-   //_init();
+   _init();
   }
 
   ~StartupShutdownHandler() {
-   //_fini();
+   _fini();
   }
 
 } g_oStartupShutdownHandler;
